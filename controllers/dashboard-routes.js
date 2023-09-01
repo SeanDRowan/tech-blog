@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 
 
 // need to get all blogposts for dashboard
-router.get('/',  async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     if (!req.session.loggedIn) {
         res.redirect('/login');
       } else {
