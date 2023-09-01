@@ -15,6 +15,7 @@
   </header>
   <nav>
     <a href="/">Home</a>
+    <a href="/dashboard">dashboard</a>
     {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
@@ -25,7 +26,7 @@
     <aside>
       <h2>Sign-in to post!</h2>
     </aside>
-    <div class="gallery">
+    <div class="container">
       {{{body}}}
     </div>
   </main>

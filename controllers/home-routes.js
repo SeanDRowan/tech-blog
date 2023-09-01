@@ -28,12 +28,12 @@ router.get('/gallery/:id', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
-    // If the user is logged in, allow them to view the gallery
+    // If the user is logged in, allow them to view their posts
     try {
-      const dbGalleryData = await Post.findByPk(req.params.id, {
+      const dbPostData = await Post.findByPk(req.params.id, {
       });
-      const gallery = dbGalleryData.get({ plain: true });
-      res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+      const post = dbPostData.get({ plain: true });
+      res.render('post', { post, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -49,11 +49,11 @@ router.get('/painting/:id', async (req, res) => {
   } else {
     // If the user is logged in, allow them to view the painting
     try {
-      const dbPaintingData = await Painting.findByPk(req.params.id);
+      const dbPostData = await Post.findByPk(req.params.id);
 
-      const painting = dbPaintingData.get({ plain: true });
+      const painting = dbPostData.get({ plain: true });
 
-      res.render('painting', { painting, loggedIn: req.session.loggedIn });
+      res.render('post', { painting, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
